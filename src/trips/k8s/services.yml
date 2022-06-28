@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: poi
+  name: trips
   namespace: trip-insights
 spec:
   selector:
-    app: poi
+    app: trips
   type: ClusterIP
   ports:
-    - name: poi
+    - name: trips
       protocol: TCP
       port: 80
       targetPort: 80

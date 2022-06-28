@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: poi
+  name: userprofile
   namespace: trip-insights
 spec:
   selector:
-    app: poi
+    app: userprofile
   type: ClusterIP
   ports:
-    - name: poi
+    - name: userprofile
       protocol: TCP
       port: 80
       targetPort: 80

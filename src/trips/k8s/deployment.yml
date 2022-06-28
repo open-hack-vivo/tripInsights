@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tips
+  namespace: trip-insights
+  labels:
+    app: trips
+spec:
+  selector:
+    matchLabels:
+      app: trips
+  template:
+    metadata:
+      labels:
+        app: trips
+    spec:
+      containers:
+        - name: trips
+          image: registryezl7212.azurecr.io/trips:1.0
+          resources:
+          env:
+            - name: SQLSERVER
+              value: sqlserverezl7212.database.windows.net
+            - name: SQLDB
+              value: mydrivingDB
+            - name: SQLPASS
+              value: ""
+            - name: SQLUSER
+              value: ""
+          ports:
+            - containerPort: 80
+              name: trips

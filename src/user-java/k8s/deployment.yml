@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tips
+  namespace: trip-insights
+  labels:
+    app: user-java
+spec:
+  selector:
+    matchLabels:
+      app: user-java
+  template:
+    metadata:
+      labels:
+        app: user-java
+    spec:
+      containers:
+        - name: user-java
+          image: registryezl7212.azurecr.io/user-java:1.0
+          resources:
+          env:
+            - name: SQLSERVER
+              value: sqlserverezl7212.database.windows.net
+            - name: SQLDB
+              value: mydrivingDB
+            - name: SQLPASS
+              value: ""
+            - name: SQLUSER
+              value: ""
+          ports:
+            - containerPort: 80
+              name: user-java

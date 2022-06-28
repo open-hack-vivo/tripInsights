@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tips
+  namespace: trip-insights
+  labels:
+    app: userprofile
+spec:
+  selector:
+    matchLabels:
+      app: userprofile
+  template:
+    metadata:
+      labels:
+        app: userprofile
+    spec:
+      containers:
+        - name: userprofile
+          image: registryezl7212.azurecr.io/userprofile:1.0
+          resources:
+          env:
+            - name: SQLSERVER
+              value: sqlserverezl7212.database.windows.net
+            - name: SQLDB
+              value: mydrivingDB
+            - name: SQLPASS
+              value: ""
+            - name: SQLUSER
+              value: ""
+          ports:
+            - containerPort: 80
+              name: userprofile
