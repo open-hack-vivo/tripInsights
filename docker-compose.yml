@@ -3,6 +3,7 @@ version: "3.7"
 services:
   poi: 
     container_name: poi
+    image: registryezl7212.azurecr.io/poi:1.0
     build: 
       context: ./src/poi/
       dockerfile: Dockerfile
@@ -10,13 +11,14 @@ services:
       - 8080:80
     networks:
       - services
-    volumes:
-      - ./secrets:/secrets
+    # volumes:
+    #   - ./secrets:/secrets
     environment:
       - ASPNETCORE_ENVIRONMENT=Local
 
   trips: 
-    container_name: trips 
+    container_name: trips
+    image: registryezl7212.azurecr.io/trips:1.0
     build: 
       context: ./src/trips/
       dockerfile: Dockerfile
@@ -29,6 +31,7 @@ services:
 
   tripviewer: 
     container_name: tripviewer 
+    image: registryezl7212.azurecr.io/tripviewer:1.0
     build: 
       context: ./src/tripviewer/
       dockerfile: Dockerfile
@@ -36,11 +39,12 @@ services:
       - 8082:80
     networks:
       - services
-    volumes:
-      - ./secrets:/secrets
+    # volumes:
+    #   - ./secrets:/secrets
 
   user_java: 
     container_name: user-java
+    image: registryezl7212.azurecr.io/user-java:1.0
     build: 
       context: ./src/user-java/
       dockerfile: Dockerfile
@@ -48,11 +52,12 @@ services:
       - 8083:80
     networks:
       - services
-    volumes:
-      - ./secrets:/secrets
+    # volumes:
+    #   - ./secrets:/secrets
 
   userprofile: 
-    container_name: userprofile 
+    container_name: userprofile
+    image: registryezl7212.azurecr.io/userprofile:1.0 
     build: 
       context: ./src/userprofile/
       dockerfile: Dockerfile
@@ -60,20 +65,20 @@ services:
       - 8084:80
     networks:
       - services
-    volumes:
-      - ./secrets:/secrets
+    # volumes:
+    #   - ./secrets:/secrets
 
-  db:
-    container_name: db
-    image: mcr.microsoft.com/mssql/server:2017-latest
-    ports:
-      - 1433:1433
-    networks:
-      - services
-    expose:
-      - 1433
-    environment:
-      - ACCEPT_EULA=Y
+  # db:
+  #   container_name: db
+  #   image: mcr.microsoft.com/mssql/server:2017-latest
+  #   ports:
+  #     - 1433:1433
+  #   networks:
+  #     - services
+  #   expose:
+  #     - 1433
+  #   environment:
+  #     - ACCEPT_EULA=Y
 
 
 
