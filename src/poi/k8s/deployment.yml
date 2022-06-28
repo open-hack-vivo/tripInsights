@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi
+  namespace: tripInsights
+  labels:
+    app: poi
+spec:
+  selector:
+    matchLabels:
+      app: poi
+  template:
+    metadata:
+      labels:
+        app: poi
+    spec:
+      containers:
+        - name: poi
+          image: registryezl7212.azurecr.io/poi:1.0
+          resources:
+          env:
+            - name: SQLSERVER
+              value: sqlserverezl7212.database.windows.net
+            - name: SQLDB
+              value: mydrivingDB
+            - name: SQLPASS
+              value: ""
+            - name: SQLUSER
+              value: ""
+          ports:
+            - containerPort: 80
+              name: poi

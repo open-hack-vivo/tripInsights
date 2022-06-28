@@ -1,0 +1,86 @@
+version: "3.7"
+
+services:
+  poi: 
+    container_name: poi
+    build: 
+      context: ./src/poi/
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    networks:
+      - services
+    volumes:
+      - ./secrets:/secrets
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Local
+
+  trips: 
+    container_name: trips 
+    build: 
+      context: ./src/trips/
+      dockerfile: Dockerfile
+    ports:
+      - 8081:80
+    networks:
+      - services
+    volumes:
+      - ./secrets:/secrets
+
+  tripviewer: 
+    container_name: tripviewer 
+    build: 
+      context: ./src/tripviewer/
+      dockerfile: Dockerfile
+    ports:
+      - 8082:80
+    networks:
+      - services
+    volumes:
+      - ./secrets:/secrets
+
+  user_java: 
+    container_name: user-java
+    build: 
+      context: ./src/user-java/
+      dockerfile: Dockerfile
+    ports:
+      - 8083:80
+    networks:
+      - services
+    volumes:
+      - ./secrets:/secrets
+
+  userprofile: 
+    container_name: userprofile 
+    build: 
+      context: ./src/userprofile/
+      dockerfile: Dockerfile
+    ports:
+      - 8084:80
+    networks:
+      - services
+    volumes:
+      - ./secrets:/secrets
+
+  db:
+    container_name: db
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - 1433:1433
+    networks:
+      - services
+    expose:
+      - 1433
+    environment:
+      - ACCEPT_EULA=Y
+
+
+
+
+networks:
+  services:
+    driver: 'bridge'
+
+
+
