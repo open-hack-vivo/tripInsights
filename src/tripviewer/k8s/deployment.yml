@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
         - name: tripviewer
-          image: registryezl7212.azurecr.io/tripviewer:1.0
+          image: registryezl7212.azurecr.io/tripviewer:2.0
           imagePullPolicy: Always
           resources:
           env:
             - name: USERPROFILE_API_ENDPOINT
-              value: userprofile
+              value: http://userprofile
             - name: TRIPS_API_ENDPOINT
-              value: trips
-          ports:
+              value: http://trips
             - containerPort: 80
               name: tripviewer
+

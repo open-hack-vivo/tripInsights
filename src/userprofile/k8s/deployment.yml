@@ -16,14 +16,23 @@ spec:
     spec:
       containers:
         - name: userprofile
-          image: registryezl7212.azurecr.io/userprofile:1.0
+          image: registryezl7212.azurecr.io/userprofile:2.0
           imagePullPolicy: Always
           env:
             - name: PORT
               value: '80'
             - name: CONFIG_FILES_PATH
-              value: /secrets
+              value: /etc/k8s/secrets
           resources:
           ports:
             - containerPort: 80
               name: userprofile
+          volumeMounts:
+            - name: secrets
+              mountPath: "/etc/k8s/secrets"
+              readOnly: true
+      volumes:
+          - name: secrets
+            secret:
+              secretName: credentials
+              optional: false

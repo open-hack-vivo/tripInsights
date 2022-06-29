@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: poi
-          image: registryezl7212.azurecr.io/poi:1.0
+          image: registryezl7212.azurecr.io/poi:2.0
           imagePullPolicy: Always
           resources:
           env:
@@ -27,7 +27,16 @@ spec:
             - name: WEB_PORT
               value: '80'
             - name: CONFIG_FILES_PATH
-              value: /secrets
+              value: /etc/k8s/secrets
           ports:
             - containerPort: 80
               name: poi
+          volumeMounts:
+            - name: secrets
+              mountPath: "/etc/k8s/secrets"
+              readOnly: true
+      volumes:
+        - name: secrets
+          secret:
+            secretName: credentials
+            optional: false

@@ -3,7 +3,7 @@ version: "3.7"
 services:
   poi: 
     container_name: poi
-    image: registryezl7212.azurecr.io/poi:1.0
+    image: registryezl7212.azurecr.io/poi:2.0
     build: 
       context: ./src/poi/
       dockerfile: Dockerfile
@@ -18,7 +18,7 @@ services:
 
   trips: 
     container_name: trips
-    image: registryezl7212.azurecr.io/trips:1.0
+    image: registryezl7212.azurecr.io/trips:2.0
     build: 
       context: ./src/trips/
       dockerfile: Dockerfile
@@ -31,7 +31,7 @@ services:
 
   tripviewer: 
     container_name: tripviewer 
-    image: registryezl7212.azurecr.io/tripviewer:1.0
+    image: registryezl7212.azurecr.io/tripviewer:2.0
     build: 
       context: ./src/tripviewer/
       dockerfile: Dockerfile
@@ -47,7 +47,7 @@ services:
 
   user_java: 
     container_name: user-java
-    image: registryezl7212.azurecr.io/user-java:1.0
+    image: registryezl7212.azurecr.io/user-java:2.0
     build: 
       context: ./src/user-java/
       dockerfile: Dockerfile
@@ -60,7 +60,7 @@ services:
 
   userprofile: 
     container_name: userprofile
-    image: registryezl7212.azurecr.io/userprofile:1.0 
+    image: registryezl7212.azurecr.io/userprofile:2.0 
     build: 
       context: ./src/userprofile/
       dockerfile: Dockerfile

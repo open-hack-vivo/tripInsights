@@ -16,9 +16,23 @@ spec:
     spec:
       containers:
         - name: user-java
-          image: registryezl7212.azurecr.io/user-java:1.0
+          image: registryezl7212.azurecr.io/user-java:2.0
           imagePullPolicy: Always
           resources:
+          env:
+            - name: CONFIG_FILES_PATH
+              value: /etc/k8s/secrets
           ports:
             - containerPort: 80
               name: user-java
+            - containerPort: 80
+              name: tripviewer
+          volumeMounts:
+            - name: secrets
+              mountPath: "/etc/k8s/secrets"
+              readOnly: true
+      volumes:
+          - name: secrets
+            secret:
+              secretName: credentials
+              optional: false
