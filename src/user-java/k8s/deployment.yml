@@ -17,6 +17,7 @@ spec:
       containers:
         - name: user-java
           image: registryezl7212.azurecr.io/user-java:1.0
+          imagePullPolicy: Always
           resources:
           ports:
             - containerPort: 80

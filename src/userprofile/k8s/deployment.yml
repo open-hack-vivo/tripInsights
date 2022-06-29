@@ -17,6 +17,7 @@ spec:
       containers:
         - name: userprofile
           image: registryezl7212.azurecr.io/userprofile:1.0
+          imagePullPolicy: Always
           resources:
           ports:
             - containerPort: 80
