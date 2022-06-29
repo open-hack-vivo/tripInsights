@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tips
+  name: tripviewer
   namespace: trip-insights
   labels:
     app: tripviewer
@@ -19,6 +19,11 @@ spec:
           image: registryezl7212.azurecr.io/tripviewer:1.0
           imagePullPolicy: Always
           resources:
+          env:
+            - name: USERPROFILE_API_ENDPOINT
+              value: userprofile
+            - name: TRIPS_API_ENDPOINT
+              value: trips
           ports:
             - containerPort: 80
               name: tripviewer

@@ -11,10 +11,10 @@ services:
       - 8080:80
     networks:
       - services
-    # volumes:
-    #   - ./secrets:/secrets
+    volumes:
+      - ./secrets:/secrets
     environment:
-      - ASPNETCORE_ENVIRONMENT=Local
+      - ASPNETCORE_ENVIRONMENT=Development
 
   trips: 
     container_name: trips
@@ -39,8 +39,8 @@ services:
       - 8082:80
     networks:
       - services
-    # volumes:
-    #   - ./secrets:/secrets
+    volumes:
+      - ./secrets:/secrets
 
   user_java: 
     container_name: user-java
@@ -52,8 +52,8 @@ services:
       - 8083:80
     networks:
       - services
-    # volumes:
-    #   - ./secrets:/secrets
+    volumes:
+      - ./secrets:/secrets
 
   userprofile: 
     container_name: userprofile
@@ -65,8 +65,8 @@ services:
       - 8084:80
     networks:
       - services
-    # volumes:
-    #   - ./secrets:/secrets
+    volumes:
+      - ./secrets:/secrets
 
   # db:
   #   container_name: db

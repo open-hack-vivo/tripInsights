@@ -6,7 +6,7 @@ metadata:
 spec:
   selector:
     app: tripviewer
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - name: tripviewer
       protocol: TCP
