@@ -41,6 +41,9 @@ services:
       - services
     volumes:
       - ./secrets:/secrets
+    environment:
+      - USERPROFILE_API_ENDPOINT=http://userprofile
+      - TRIPS_API_ENDPOINT=http://trips
 
   user_java: 
     container_name: user-java
