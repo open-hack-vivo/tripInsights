@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: poi
-  namespace: trip-insights
+  namespace: api
 spec:
   selector:
     app: poi

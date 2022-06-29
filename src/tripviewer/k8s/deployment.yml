@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tripviewer
-  namespace: trip-insights
+  namespace: web
   labels:
     app: tripviewer
 spec:

@@ -14,7 +14,7 @@ services:
     volumes:
       - ./secrets:/secrets
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Local
 
   trips: 
     container_name: trips
@@ -74,6 +74,11 @@ services:
   # db:
   #   container_name: db
   #   image: mcr.microsoft.com/mssql/server:2017-latest
+  #   entrypoint: /entrypoint.sh
+  #   volumes:
+  #     - ./setup.sql:/setup.sql
+  #     - ./entrypoint.sh:/entrypoint.sh
+  #     - ./create-db.sh:/create-db.sh
   #   ports:
   #     - 1433:1433
   #   networks:
@@ -82,6 +87,11 @@ services:
   #     - 1433
   #   environment:
   #     - ACCEPT_EULA=Y
+  #     - SQLFQDN=127.0.0.1
+  #     - SQLUSER=sqladmin
+  #     - SA_PASSWORD=Yukon900
+  #     - SQLDB=mydrivingDB
+  #   #command: /bin/sh -c /entrypoint.sh
 
 
 
